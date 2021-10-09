@@ -69,6 +69,7 @@
 </body>
 <script>
 
+let char=0;
     var username_error=document.getElementById('username_error');
    
     var successs=document.getElementById('successs');
@@ -80,7 +81,7 @@
     var btn=document.getElementById('login').disabled=true;
 
     function myFunction(){
-        let char=username.value;
+        char=username.value;
         char=char.length;
         if(char>8){
 
@@ -131,7 +132,7 @@
         btn=document.getElementById('login').disabled=true;
 
      }
-     if(char1>8)
+     if(char1>8 && char>8)
      {
         progress[0].style.background='lightgreen';
         progress[1].style.background='lightgreen';
