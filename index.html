@@ -5,19 +5,133 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        .container{
+            position: absolute;
+            display: grid;
+            top: 20%;
+            left: 40%;
+            background-color: blanchedalmond;
+            padding: 50px;
+            border: 3px solid bisque;
+            border-radius: 15px;
+        }
+        input{
+            height: 40px;
+            width: 250px;
+            border: 2px solid green;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        #login{
+            background-color: greenyellow;
+            height: 50px;
+            cursor: pointer;
+        }
+        .error{
+            color: red;
+            font-size: 13px;
+        }
+        span{
+            display: inline-block;
+            height: 1px;
+            padding: 1px 20px;
+            color: grey;
+            border: 0.5px solid;
+            margin: 1px 1px;
+            border-radius: 10px;
+            transition: 0.8s;
+        }
+        
+
+    </style>
 </head>
 <body>
     <div class="container">
         <p>Enter Username : </p>
-        <input type="text" class="input-text" id="username">
-        <p class="error"></p>
+        <input type="text" class="input-text" id="username" oninput="myFunction()">
+        <p class="error" id="username_error"></p>
         <p>Enter Password : </p>
-        <input type="text" class="input-text" id="password">
-        <p class="error"></p>
-        <input type="submit" id="login" class="btn">
-
+        <input type="password" class="input-text" id="password">
+        <p id="progress">
+            <span id="one"></span>
+            <span id="two"></span>
+            <span id="three"></span>
+            <span id="four"></span>
+            <span id="five"></span>
+        </p>
+        <input type="submit" id="login" class="btn" onclick="Clicked()">
+        <p id="successs"></p>
 
     </div>
     
 </body>
+<script>
+
+    var username_error=document.getElementById('username_error');
+   
+    var successs=document.getElementById('successs');
+    var username=document.getElementById('username');
+    var password=document.getElementById('password');
+    
+    var progress=document.getElementsByTagName('span');
+    
+    var btn=document.getElementById('login').disabled=true;
+
+    function myFunction(){
+        let char=username.value;
+        char=char.length;
+        if(char>8){
+
+            username_error.innerHTML="";
+        
+
+        }
+        else{
+            username_error.innerHTML="* username must be greater than 8 !";
+        }
+    }
+
+    password.addEventListener('input',function(){
+
+        let char1=password.value;
+        char1=char1.length;
+      if(char1<3){
+                 
+        progress[0].style.background='red';
+                
+     }
+     if(char1<5 && char1>2)
+     {
+        progress[0].style.background='red';
+        progress[1].style.background='red';
+     }
+     if(char1<8 && char1>4)
+     {
+        progress[0].style.background='orange';
+        progress[1].style.background='orange';
+        progress[2].style.background='orange';
+     }
+     if(char1>8)
+     {
+        progress[0].style.background='lightgreen';
+        progress[1].style.background='lightgreen';
+        progress[2].style.background='lightgreen';
+        progress[3].style.background='lightgreen';
+        progress[4].style.background='lightgreen';
+        btn=document.getElementById('login').disabled=false;
+     }
+
+});
+
+function Clicked(){
+    successs.innerHTML=`I am working further
+But You are login successfully`;
+    successs.style.color="green";
+    username_error.innerHTML="";
+} 
+
+
+
+</script>
 </html>
