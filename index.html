@@ -37,10 +37,11 @@
             height: 1px;
             padding: 1px 20px;
             color: grey;
-            border: 0.5px solid;
+            border: 0.1px solid;
             margin: 1px 1px;
             border-radius: 10px;
             transition: 0.8s;
+            background-color: grey;
         }
         
 
@@ -89,6 +90,7 @@
         }
         else{
             username_error.innerHTML="* username must be greater than 8 !";
+            btn=document.getElementById('login').disabled=true;
         }
     }
 
@@ -99,18 +101,35 @@
       if(char1<3){
                  
         progress[0].style.background='red';
+        progress[1].style.background='grey';
+        progress[2].style.background='grey';
+        progress[3].style.background='grey';
+        progress[4].style.background='grey';
+        btn=document.getElementById('login').disabled=true;
                 
      }
      if(char1<5 && char1>2)
      {
         progress[0].style.background='red';
         progress[1].style.background='red';
+
+       
+        progress[2].style.background='grey';
+        progress[3].style.background='grey';
+        progress[4].style.background='grey';
+        btn=document.getElementById('login').disabled=true;
      }
      if(char1<8 && char1>4)
      {
         progress[0].style.background='orange';
         progress[1].style.background='orange';
         progress[2].style.background='orange';
+
+      
+        progress[3].style.background='grey';
+        progress[4].style.background='grey';
+        btn=document.getElementById('login').disabled=true;
+
      }
      if(char1>8)
      {
